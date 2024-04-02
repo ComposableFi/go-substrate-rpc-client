@@ -26,7 +26,6 @@ type DisputeLocation struct {
 
 func (d *DisputeLocation) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}
@@ -60,7 +59,6 @@ type DisputeResult struct {
 
 func (d *DisputeResult) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

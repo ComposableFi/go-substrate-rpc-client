@@ -214,7 +214,7 @@ func (e Extrinsic) Encode(encoder scale.Encoder) error {
 
 	// create a temporary buffer that will receive the plain encoded transaction (version, signature (optional),
 	// method/call)
-	var bb = bytes.Buffer{}
+	bb := bytes.Buffer{}
 	tempEnc := scale.NewEncoder(&bb)
 
 	// encode the version of the extrinsic

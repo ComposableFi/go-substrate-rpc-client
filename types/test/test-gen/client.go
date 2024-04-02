@@ -54,7 +54,6 @@ type Client struct {
 
 func NewClient(opts ClientOpts) (*Client, error) {
 	sapi, err := gsrpc.NewSubstrateAPI(opts.WsURL)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't create substrate client: %w", err)
 	}
@@ -96,7 +95,6 @@ type EventListResponseBody struct {
 
 func (c *Client) GetTestData(ctx context.Context, reqData *ReqData) (*TestData, error) {
 	blockNumber, err := c.getBlockNumber(ctx, reqData)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get block number: %w", err)
 	}
@@ -117,31 +115,26 @@ type TestData struct {
 
 func (c *Client) getTestData(blockNumber int) (*TestData, error) {
 	meta, err := c.sapi.RPC.State.GetMetadataLatest()
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get latest metadata: %w", err)
 	}
 
 	encodedMetadata, err := types.Encode(meta)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't encode metadata: %w", err)
 	}
 
 	key, err := types.CreateStorageKey(meta, "System", "Events", nil)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't create storage key: %w", err)
 	}
 
 	bh, err := c.sapi.RPC.Chain.GetBlockHash(uint64(blockNumber))
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get block hash '%d': %w", blockNumber, err)
 	}
 
 	storageData, err := c.sapi.RPC.State.GetStorageRaw(key, bh)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get raw storage data with key '%s': %w", key, err)
 	}
@@ -167,13 +160,11 @@ var (
 
 func (c *Client) getBlockNumber(ctx context.Context, reqData *ReqData) (int, error) {
 	req, err := c.createRequest(ctx, reqData)
-
 	if err != nil {
 		return 0, fmt.Errorf("couldn't create request: %w", err)
 	}
 
 	res, err := c.http.Do(req)
-
 	if err != nil {
 		return 0, fmt.Errorf("couldn't perform request: %w", err)
 	}
@@ -181,7 +172,6 @@ func (c *Client) getBlockNumber(ctx context.Context, reqData *ReqData) (int, err
 	defer res.Body.Close()
 
 	b, err := ioutil.ReadAll(res.Body)
-
 	if err != nil {
 		return 0, fmt.Errorf("couldn't read response body: %w", err)
 	}
@@ -234,13 +224,11 @@ func (c *Client) createRequest(ctx context.Context, reqData *ReqData) (*http.Req
 		Module: reqData.Module,
 		Call:   reqData.Call,
 	})
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't marshal request body: %w", err)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, c.apiURL, bytes.NewReader(b))
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't create request: %w", err)
 	}

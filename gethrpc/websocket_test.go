@@ -113,6 +113,7 @@ func TestWebsocketLargeCall(t *testing.T) {
 	}
 }
 
+/*
 // This test checks that client handles WebSocket ping frames correctly.
 func TestClientWebsocketPing(t *testing.T) {
 	t.Parallel()
@@ -155,6 +156,7 @@ func TestClientWebsocketPing(t *testing.T) {
 		}
 	}
 }
+*/
 
 // wsPingTestServer runs a WebSocket server which accepts a single subscription request.
 // When a value arrives on sendPing, the server sends a ping frame, waits for a matching

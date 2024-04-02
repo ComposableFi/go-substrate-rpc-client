@@ -61,7 +61,6 @@ type TokenError struct {
 
 func (t *TokenError) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}
@@ -117,7 +116,6 @@ type ArithmeticError struct {
 
 func (a *ArithmeticError) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}
@@ -155,7 +153,6 @@ type TransactionalError struct {
 
 func (t *TransactionalError) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

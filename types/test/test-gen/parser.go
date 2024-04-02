@@ -51,13 +51,11 @@ func (p *Parser) CanSkip(field reflect.StructField) bool {
 
 func (p *Parser) ParseField(field reflect.StructField) (*FieldInfo, error) {
 	clientOpts, err := p.parseClientOpts(field)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't parse client opts: %w", err)
 	}
 
 	reqData, err := p.parseReqData(field)
-
 	if err != nil {
 		return nil, fmt.Errorf("couldn't parse client opts: %w", err)
 	}

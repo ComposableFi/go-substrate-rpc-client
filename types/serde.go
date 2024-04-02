@@ -24,8 +24,10 @@ type SerDeOptions struct {
 	NoPalletIndices bool
 }
 
-var defaultOptions = SerDeOptions{}
-var mu sync.RWMutex
+var (
+	defaultOptions = SerDeOptions{}
+	mu             sync.RWMutex
+)
 
 // SetSerDeOptions overrides default serialise and deserialize options
 func SetSerDeOptions(so SerDeOptions) {

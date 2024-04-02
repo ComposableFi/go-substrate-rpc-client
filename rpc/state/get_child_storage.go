@@ -24,7 +24,8 @@ import (
 // GetChildStorage retreives the child storage for a key and decodes them into the provided interface. Ok is true if the
 // value is not empty.
 func (s *state) GetChildStorage(childStorageKey, key types.StorageKey, target interface{}, blockHash types.Hash) (
-	ok bool, err error) {
+	ok bool, err error,
+) {
 	raw, err := s.getChildStorageRaw(childStorageKey, key, &blockHash)
 	if err != nil {
 		return false, err
@@ -50,7 +51,8 @@ func (s *state) GetChildStorageLatest(childStorageKey, key types.StorageKey, tar
 
 // GetChildStorageRaw retreives the child storage for a key as raw bytes, without decoding them
 func (s *state) GetChildStorageRaw(childStorageKey, key types.StorageKey, blockHash types.Hash) (
-	*types.StorageDataRaw, error) {
+	*types.StorageDataRaw, error,
+) {
 	return s.getChildStorageRaw(childStorageKey, key, &blockHash)
 }
 
@@ -61,7 +63,8 @@ func (s *state) GetChildStorageRawLatest(childStorageKey, key types.StorageKey) 
 }
 
 func (s *state) getChildStorageRaw(childStorageKey, key types.StorageKey, blockHash *types.Hash) (
-	*types.StorageDataRaw, error) {
+	*types.StorageDataRaw, error,
+) {
 	var res string
 	err := client.CallWithBlockHash(s.client, &res, "state_getChildStorage", blockHash, childStorageKey.Hex(),
 		key.Hex())

@@ -223,7 +223,7 @@ func (s StorageFunctionMetadataV5) Hashers() ([]hash.Hash, error) {
 		return nil, fmt.Errorf("Hashers() is only to be called on Maps")
 	}
 
-	var hashers = collectHashersV5(s.Type)
+	hashers := collectHashersV5(s.Type)
 	hasherFns := make([]hash.Hash, len(hashers))
 	for i, hasher := range hashers {
 		hasherFn, err := hasher.HashFunc()

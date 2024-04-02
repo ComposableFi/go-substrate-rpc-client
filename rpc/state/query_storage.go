@@ -23,7 +23,8 @@ import (
 
 // QueryStorage queries historical storage entries (by key) starting from a start block until an end block
 func (s *state) QueryStorage(keys []types.StorageKey, startBlock types.Hash, block types.Hash) (
-	[]types.StorageChangeSet, error) {
+	[]types.StorageChangeSet, error,
+) {
 	return s.queryStorage(keys, startBlock, &block)
 }
 
@@ -33,7 +34,8 @@ func (s *state) QueryStorageLatest(keys []types.StorageKey, startBlock types.Has
 }
 
 func (s *state) queryStorage(keys []types.StorageKey, startBlock types.Hash, block *types.Hash) (
-	[]types.StorageChangeSet, error) {
+	[]types.StorageChangeSet, error,
+) {
 	hexKeys := make([]string, len(keys))
 	for i, key := range keys {
 		hexKeys[i] = key.Hex()

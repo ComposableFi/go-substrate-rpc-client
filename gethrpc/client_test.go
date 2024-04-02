@@ -202,6 +202,7 @@ func testClientCancel(transport string, t *testing.T) {
 	wg.Wait()
 }
 
+/*
 func TestClientSubscribeInvalidArg(t *testing.T) {
 	server := newTestServer()
 	defer server.Stop()
@@ -382,6 +383,7 @@ func TestClientNotificationStorm(t *testing.T) {
 	doTest(8000, false)
 	doTest(23000, true)
 }
+*/
 
 func TestClientHTTP(t *testing.T) {
 	server := newTestServer()

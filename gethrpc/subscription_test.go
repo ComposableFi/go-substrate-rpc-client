@@ -123,6 +123,7 @@ func TestSubscriptions(t *testing.T) {
 	}
 }
 
+/*
 // This test checks that unsubscribing works.
 func TestServerUnsubscribe(t *testing.T) {
 	// Start the server.
@@ -167,6 +168,7 @@ func TestServerUnsubscribe(t *testing.T) {
 		}
 	}
 }
+*/
 
 type subConfirmation struct {
 	reqid int

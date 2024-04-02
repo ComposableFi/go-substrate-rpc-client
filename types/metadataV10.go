@@ -236,7 +236,7 @@ func (s StorageFunctionMetadataV10) Hashers() ([]hash.Hash, error) {
 		return nil, fmt.Errorf("Hashers() is only to be called on Maps")
 	}
 
-	var hashers = collectHashersV10(s.Type)
+	hashers := collectHashersV10(s.Type)
 	hasherFns := make([]hash.Hash, len(hashers))
 	for i, hasher := range hashers {
 		hasherFn, err := hasher.HashFunc()

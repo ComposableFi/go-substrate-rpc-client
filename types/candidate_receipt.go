@@ -16,8 +16,10 @@
 
 package types
 
-type CollatorID [32]U8
-type CollatorSignature [64]U8
+type (
+	CollatorID        [32]U8
+	CollatorSignature [64]U8
+)
 
 type CandidateDescriptor struct {
 	ParachainID                  ParachainID

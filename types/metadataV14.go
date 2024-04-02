@@ -66,7 +66,7 @@ func (m *MetadataV14) Decode(decoder scale.Decoder) error {
 
 // Build a map of type id to pointer to the PortableTypeV14 itself.
 func (lookup *PortableRegistryV14) toMap() map[int64]*Si1Type {
-	var efficientLookup = make(map[int64]*Si1Type)
+	efficientLookup := make(map[int64]*Si1Type)
 	var t PortableTypeV14
 	for _, t = range lookup.Types {
 		// We need to copy t so that the pointer doesn't get

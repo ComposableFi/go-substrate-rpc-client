@@ -861,8 +861,10 @@ type EventAssetForceCreated struct {
 	Topics  []Hash
 }
 
-type MetadataSetName []byte
-type MetadataSetSymbol []byte
+type (
+	MetadataSetName   []byte
+	MetadataSetSymbol []byte
+)
 
 // EventAssetMetadataSet is emitted when new metadata has been set for an asset.
 type EventAssetMetadataSet struct {
@@ -1093,7 +1095,6 @@ const (
 //nolint:lll
 func (d *DemocracyVote) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}
@@ -1156,7 +1157,6 @@ type VoteAccountVote struct {
 
 func (vv *VoteAccountVote) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

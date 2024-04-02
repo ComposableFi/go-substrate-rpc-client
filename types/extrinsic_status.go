@@ -46,7 +46,6 @@ type ExtrinsicStatus struct {
 
 func (e *ExtrinsicStatus) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

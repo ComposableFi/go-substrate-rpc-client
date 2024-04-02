@@ -30,7 +30,6 @@ type VersionedFinalityProof struct {
 
 func (v *VersionedFinalityProof) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

@@ -63,7 +63,6 @@ func main() { //nolint: funlen
 		}
 
 		fieldInfo, err := parser.ParseField(field)
-
 		if err != nil {
 			fmt.Println("Couldn't parse field -", err)
 			os.Exit(1)
@@ -81,7 +80,6 @@ func main() { //nolint: funlen
 
 	for clientOpts, reqData := range requestMap {
 		c, err := NewClient(clientOpts)
-
 		if err != nil {
 			fmt.Println("Couldn't create new client -", err)
 			os.Exit(1)
@@ -89,7 +87,6 @@ func main() { //nolint: funlen
 
 		for _, reqDatum := range reqData {
 			testData, err := c.GetTestData(ctx, reqDatum)
-
 			if err != nil {
 				fmt.Printf("Couldn't get raw data for %s %s - %s\n", reqDatum.Module, reqDatum.Call, err)
 
@@ -118,7 +115,6 @@ func writeTestData(
 	}
 
 	metaFile, err := os.Create(fmt.Sprintf("%s/%d/%s", dirName, count, metaFileName))
-
 	if err != nil {
 		return err
 	}
@@ -130,7 +126,6 @@ func writeTestData(
 	}
 
 	storageFile, err := os.Create(fmt.Sprintf("%s/%d/%s", dirName, count, storageFileName))
-
 	if err != nil {
 		return err
 	}
@@ -142,7 +137,6 @@ func writeTestData(
 	}
 
 	infoFile, err := os.Create(fmt.Sprintf("%s/%d/info.txt", dirName, count))
-
 	if err != nil {
 		return err
 	}

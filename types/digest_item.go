@@ -40,7 +40,6 @@ type DigestItem struct {
 
 func (m *DigestItem) Decode(decoder scale.Decoder) error {
 	b, err := decoder.ReadOneByte()
-
 	if err != nil {
 		return err
 	}

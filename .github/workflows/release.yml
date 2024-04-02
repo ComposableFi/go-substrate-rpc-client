@@ -3,24 +3,24 @@
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
 name: Release
 jobs:
   release:
     strategy:
       matrix:
-        os: [ ubuntu-latest ]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out code
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Generate changelog
         id: changelog-generator
         uses: vedhavyas/generate-changelog@v4.0.2
         with:
-          commit-template: '- {hash} → {title}'
+          commit-template: "- {hash} → {title}"
           template: |
             ### Changelog
 

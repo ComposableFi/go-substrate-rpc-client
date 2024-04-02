@@ -67,7 +67,8 @@ func (s *StorageSubscription) Unsubscribe() {
 // subscriber dead. The subscription Err channel will receive ErrSubscriptionQueueOverflow. Use a sufficiently
 // large buffer on the channel or ensure that the channel usually has at least one reader to prevent this issue.
 func (s *state) SubscribeStorageRaw(keys []types.StorageKey) (
-	*StorageSubscription, error) {
+	*StorageSubscription, error,
+) {
 	ctx, cancel := context.WithTimeout(context.Background(), config.Default().SubscribeTimeout)
 	defer cancel()
 

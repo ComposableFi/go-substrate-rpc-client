@@ -23,7 +23,8 @@ import (
 
 // GetChildKeys retreives the keys with the given prefix of a specific child storage
 func (s *state) GetChildKeys(childStorageKey, prefix types.StorageKey, blockHash types.Hash) (
-	[]types.StorageKey, error) {
+	[]types.StorageKey, error,
+) {
 	return s.getChildKeys(childStorageKey, prefix, &blockHash)
 }
 
@@ -33,7 +34,8 @@ func (s *state) GetChildKeysLatest(childStorageKey, prefix types.StorageKey) ([]
 }
 
 func (s *state) getChildKeys(childStorageKey, prefix types.StorageKey, blockHash *types.Hash) (
-	[]types.StorageKey, error) {
+	[]types.StorageKey, error,
+) {
 	var res []string
 	err := client.CallWithBlockHash(s.client, &res, "state_getChildKeys", blockHash, childStorageKey.Hex(), prefix.Hex())
 	if err != nil {

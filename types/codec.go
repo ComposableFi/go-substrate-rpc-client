@@ -34,7 +34,7 @@ type Hexer interface {
 
 // Encode encodes `value` with the scale codec with passed EncoderOptions, returning []byte
 func Encode(value interface{}) ([]byte, error) {
-	var buffer = bytes.Buffer{}
+	buffer := bytes.Buffer{}
 	err := scale.NewEncoder(&buffer).Encode(value)
 	if err != nil {
 		return buffer.Bytes(), err
@@ -68,7 +68,7 @@ func DecodeFromHex(str string, target interface{}) error {
 
 // EncodedLength returns the length of the value when encoded as a byte array
 func EncodedLength(value interface{}) (int, error) {
-	var buffer = bytes.Buffer{}
+	buffer := bytes.Buffer{}
 	err := scale.NewEncoder(&buffer).Encode(value)
 	if err != nil {
 		return 0, err
